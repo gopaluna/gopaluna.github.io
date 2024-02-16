@@ -1,180 +1,304 @@
 <!DOCTYPE html>
 <html lang="en">
-<style>
-    .button {
-        background-color: #4CAF50;
-        /* Green */
-        border: none;
-        color: white;
-        padding: 5px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 12px;
-        margin: 4px 2px;
-        cursor: pointer;
-    }
-
-    .round {
-        border-radius: 8px;
-    }
-
-    #response {
-        background-color: #ff9800;
-    }
-
-    /* Orange */
-</style>
 <head>
-    <meta charset="UTF-8">
-    <title>WAPH - Phani Gopaluni</title>
+    <title>WAPH - Individual Project 1</title>
+    
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Google Font -->
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,500,400italic,300italic,300,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <!-- FontAwesome JS-->
+	<script src="./fontawesome/js/all.min.js" data-mutate-approach="sync"></script>
+    
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <!-- Theme CSS -->  
+    <link rel="stylesheet" href="./styles.css">
 
-    <link rel="stylesheet" href="https://waph-uc.github.io/style1.css">
+    <!-- jQuery -->  
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
     <script>
-        function encodeElement(text) {
-            let div = document.createElement('div');
-            div.innerText = text;
-            return div.innerHTML;
-        }
+        window.addEventListener('load', () => {
+            if (document.cookie) {
+                alert(`Welcome Back! Your last visit was on: ${document.cookie}`);
+            } else {
+                alert('Welcome to my Home Page!');
+            }
+            document.cookie = new Date();
+        })
     </script>
-</head>
+</head> 
+
 <body>
-    <div class="container wrapper">
-        <div id="top">
-            <h1>Web Application Programming and Hacking</h1>
-            <h2>Front-End Web Development Lab</h2>
-            <h3>Instructor: Dr. Phu Phung</h3>
-        </div>
-    
-        <div class="wrapper">
-            <div id="menubar">
-                <h3>Student: Phani Gopaluni</h3>
-                <img src="Headshot.jpeg" alt="My Headshot" width="50">
-        
-                <div id="email" onclick="showHideEmail()">Show my email</div>
-                <script src="email.js"></script>
-        
-                <div id="digital-clock">
-                    <script>
-                        function displayTime() {
-                            document.getElementById('digital-clock').innerHTML = "Current Time: " + new Date();
-                        }
-                        setInterval(displayTime, 500);
-                    </script>
-                </div>
-        
-                <canvas id="analog-clock" width="150" height="150" style="background-color:#999"></canvas>
-                <script src="https://waph-uc.github.io/clock.js"></script>
-                <script>
-                    var canvas = document.getElementById("analog-clock");
-                    var ctx = canvas.getContext("2d");
-                    var radius = canvas.height / 2;
-                    ctx.translate(radius, radius);
-                    radius = radius * 0.90
-                    setInterval(drawClock, 1000);
-                    function drawClock() {
-                        drawFace(ctx, radius);
-                        drawNumbers(ctx, radius);
-                        drawTime(ctx, radius);
-                    }
-                </script>
+    <div class="wrapper mt-lg-5">
+        <div class="sidebar-wrapper">
+            <div class="profile-container">
+                <img class="profile" src="./Headshot.jpeg" alt="" width="150" style="border-radius: 50%;" />
+                <h1 class="name">Phani Gopaluni</h1>
+                <h3 class="tagline">Full Stack Developer</h3>
             </div>
             
-            <div id="main">
-                <p>A simple HTML Page</p>
-                Using the <a href="https://www.w3schools.com/html">W3 Schools Template</a>
-                <hr>
-                <b>Interaction with forms</b>
-                <hr>
-        
-                <div>
-                    <i>From with HTTP Get Request</i>
-                    <form action="/echo.php" method="GET" name="echo_post">
-                        Your Input: <input type="text" name="data">
-                        <input type="submit" value="submit">
-                    </form>
-                </div>
-                <hr>
-        
-                <div>
-                    <i>Form with HTTP POST Request</i>
-                    <form action="/echo.php" method="POST" name="echo_post">
-                        Your Input: <input type="text" name="data">
-                        <input type="submit" value="submit">
-                    </form>
-                </div>
-                <hr>
-        
-                <div>
-                    <i>Ajax Requests</i> Your Input:
-                    <input type="text" name="data" id="data" onkeypress="console.log('you have a pressed a key')">
-                    <input type="button" class="button round" value="Ajax Echo" onclick="getEcho()">
-                       
-                    <input type="button" value="jQuery Ajax GET Echo" class="button round" onclick="jQueryAjax()">
-                    <input type="button" value="jQuery Ajax POST Echo" class="button round" onclick="jQueryAjaxPost()">
-                    
-                    <input type="button" value="Guess Age" class="button round" onclick="guessAge($('#data').val())">
+            <div class="contact-container container-block">
+                <ul class="list-unstyled contact-list">
+                    <li class="email"><i class="fa-solid fa-envelope"></i><a href="mailto: gopaluna@mail.uc.edu">gopaluna.mail.uc.edu</a></li>
+                    <li class="phone"><i class="fa-solid fa-phone"></i><a href="tel:15132062485">+1 513 206 2585</a></li>
+                    <li class="linkedin"><i class="fa-brands fa-linkedin-in"></i><a href="https://linkedin.com/in/phani-g" target="_blank">linkedin.com/in/phani-g</a></li>
+                    <li class="github"><i class="fa-brands fa-github"></i><a href="https://github.com/gopaluna/waph-gopaluna" target="_blank">github.com/gopaluna</a></li>
+                </ul>
+            </div>
 
-                    <div id="response"></div>
+            <div class="education-container container-block">
+                <h2 class="container-block-title">Education</h2>
+                <div class="item">
+                    <h4 class="degree">MS in Information Technology</h4>
+                    <h5 class="meta">University of Cincinnati</h5>
+	                    <div class="time">2023 - 2024</div>
+                </div>
+                
+                <div class="item">
+                    <h4 class="degree">B.Tech in Information Technology</h4>
+                    <h5 class="meta">RVR & JC College of Engineering</h5>
+                    <div class="time">2017 - 2021</div>
+                </div>
+            </div>
+            
+            <div class="languages-container container-block">
+                <h2 class="container-block-title">Languages</h2>
+                <ul class="list-unstyled interests-list">
+                    <li>Telugu <span class="lang-desc">(Native)</span></li>
+                    <li>English <span class="lang-desc">(Professional)</span></li>
+                </ul>
+            </div> 
+        </div>
+        
+        <div class="main-wrapper">
+            <section class="section summary-section">
+                <h2 class="section-title"><span class="icon-holder"><i class="fa-solid fa-user"></i></span>Career Profile</h2>
+                <div class="summary">
+                    <p>I am an IT professional with about 3 years of work experience in web development and data science. Currently, I am pursuing my Master's degree in IT at UC.</p>
+                </div>
+            </section>
+            
+            <section class="section experiences-section">
+                <h2 class="section-title"><span class="icon-holder"><i class="fa-solid fa-briefcase"></i></span>Experiences</h2>
+                
+                <div class="item">
+                    <div class="meta">
+                        <div class="upper-row">
+                            <h3 class="job-title">Full Stack Developer</h3>
+                            <div class="time">Aug, 2023 - Present</div>
+                        </div>
+                        <div class="company">IT Analytics Center, University of Cincinnati</div>
+                    </div>
+                    <div class="details">
+                        <p>Working on a project called Kankabot. It involves utilizing the generative capabilities of a large language model and integrating them with a knowledge base built on ODRC data to generate real-time bot responses. My contributions to the project include developing an LLM-based agent for Llama-2, establishing a pipeline for knowledge base creation and updates, and constructing a user interface (web application). This experience showcases my proficiency in both software development and machine learning.</p>
+                    </div>
+                </div>
+                
+                <div class="item">
+                    <div class="meta">
+                        <div class="upper-row">
+                            <h3 class="job-title">Data Scientist</h3>
+                            <div class="time">Jan, 2021 - Jul, 2023</div>
+                        </div>
+                        <div class="company">Quinbay, Bangalore</div>
+                    </div>
+                    <div class="details">
+                        <p>In my role as a Data Scientist, I've been at the forefront of leveraging advanced technologies to address complex challenges and drive innovation.</p>
+                        <p>My expertise in MLOps was instrumental in designing and implementing an efficient pipeline in Quinbay. This initiative automated deployment tasks for models in production, ensuring a seamless and reliable process. I also undertook the optimization of GPU utilization through dynamic batching of real-time requests, resulting in a significant reduction in GPU usage for the Image Quality Check Service, which processes millions of images daily.</p>
+                        <p>Simultaneously, my Full Stack Development contributions included projects like Lenz, where I designed and implemented REST APIs for a travel sports company, and Blihire, where I played a crucial role in developing REST APIs for an HR hiring portal at Blibli.</p>
+                        <p>My professional journey showcases a commitment to applying a diverse skill set across both data science and full stack development to deliver impactful solutions. I am passionate about pushing the boundaries of technology to solve intricate challenges and drive positive outcomes across various domains.</p>
+                    </div>
+                </div>            
+            </section>
+                       
+            <section class="skills-section section">
+                <h2 class="section-title"><span class="icon-holder"><i class="fa-solid fa-rocket"></i></span>Skills &amp; Proficiency</h2>
+                <div class="skillset">        
+                    <div class="item">
+                        <h3 class="level-title">Python &amp; Flask &amp; FastAPI</h3>
+                        <div class="progress level-bar">
+						    <div class="progress-bar theme-progress-bar" role="progressbar" style="width: 99%" aria-valuenow="99" aria-valuemin="0" aria-valuemax="100"></div>
+						</div>                               
+                    </div>
+                    
+                    <div class="item">
+                        <h3 class="level-title">Javascript &amp; Node.js</h3>
+                        <div class="progress level-bar">
+						    <div class="progress-bar theme-progress-bar" role="progressbar" style="width: 98%" aria-valuenow="98" aria-valuemin="0" aria-valuemax="100"></div>
+						</div>                              
+                    </div>
+                    
+                    <div class="item">
+                        <h3 class="level-title">React &amp; Vue</h3>
+                        <div class="progress level-bar">
+						    <div class="progress-bar theme-progress-bar" role="progressbar" style="width: 98%" aria-valuenow="98" aria-valuemin="0" aria-valuemax="100"></div>
+						</div>                                 
+                    </div>
+                    
+                    <div class="item">
+                        <h3 class="level-title">HTML5 &amp; CSS</h3>
+                        <div class="progress level-bar">
+							    <div class="progress-bar theme-progress-bar" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
+						</div>                                
+                    </div>
+                    
+                    <div class="item">
+                        <h3 class="level-title">Java &amp; Spring Boot</h3>
+                        <div class="progress level-bar">
+						    <div class="progress-bar theme-progress-bar" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+						</div>                                  
+                    </div>
+                    
+                    <div class="item">
+                        <h3 class="level-title">Machine Learning</h3>
+                        <div class="progress level-bar">
+						    <div class="progress-bar theme-progress-bar" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
+						</div>                                 
+                    </div>                    
+                </div>  
+            </section>
+            
+            <section class="section flag-counter-section">
+                <h2 class="section-title">Flag Counter Tracker</h2>            
+                <a href="https://info.flagcounter.com/29ss"><img src="https://s11.flagcounter.com/count2/29ss/bg_FFFFFF/txt_000000/border_CCCCCC/columns_2/maxflags_10/viewers_0/labels_0/pageviews_0/flags_0/percent_0.jpeg"></a>
+            </section>
+
+            <section class="section technical-requirements-section">
+                <h2 class="section-title">Technical Requirements</h2>
+                <div>
+                    <h6>Task 1.a</h6>
+                    <input type="text" name="data" id="data">
+                    <input type="button" value="Guess Age" class="btn btn-primary btn-sm" onclick="guessAge($('#data').val())">
+                    <div id="response" class="summary"></div>
                     <script>
                         async function guessAge(name) {
                             const response = await fetch("https://api.agify.io/?name=" + name);
                             const result = await response.json();
-                            $("#response").html("Hi " + name + " your age should be " + encodeElement(result.age));
+                            $("#response").html("Hi " + name + " your age should be " + result.age);
                         }
-                        function jQueryAjax() {
-                            var input = $("#data").val();
-                            if (input.length == 0) return;
-                            $.get("echo.php?data=" + input, function (result) {
-                                $("#response").html("Response from server:" + encodeElement(result));
-                            });
-                            $("#data").val("");
-                        }
-
-                        function jQueryAjaxPost() {
-                            var input = $("#data").val();
-                            if (input.length == 0) return;
-                            $.post("echo.php", { data: input }, function (result) {
-                                $("#response").html("Response from server:" + encodeElement(result));
-                            });
-                            $("#data").val("");
-                        }
-
-                        function getEcho() {
-                            console.log("inside get echo");
-                            var input = document.getElementById("data").value;
-                            if (input.length = 0) {
-                                return;
-                            }
-                            var xhttp = new XMLHttpRequest();
-                            xhttp.onreadystatechange = function () {
-                                if (this.readyState == 4 && this.status == 200) {
-                                    console.log("Received data=" + xhttp.responseText);
-                                    document.getElementById("response").innerText = "Response from server:" + encodeElement(xhttp.responseText);
-                                }
-                            }
-                            xhttp.open("GET", "echo.php?data=" + input, true);
-                            xhttp.send();
-                            document.getElementById("data").value = '';
-                        }
-
-                        $.get("https://v2.jokeapi.dev/joke/Programming?type=single", function (result) {
-                            // console.log("From jokeAPI: " + JSON.stringify(result));
-                            $("#response").html("A programming joke of the day: " + result.joke)
-                        })
                     </script>
                 </div>
-                <hr>
-                
-                <b>Experiments with JavaScript code.</b>
-                <i>Inlined JavaScript</i>
-                <div id="date" onclick="document.getElementById('date').innerHTML=Date()">Click here to show Date()
+
+                <div style="margin-top: 15px;">
+                    <h6>Task 1.b</h6>
+                    <div id="digital-clock">
+                        <script>
+                            function displayTime() {
+                                document.getElementById('digital-clock').innerHTML = "Current Time: " + new Date();
+                            }
+                            setInterval(displayTime, 500);
+                        </script>
+                    </div>
+
+                    <canvas id="analog-clock" width="150" height="150" style="background-color:#999"></canvas>
+                    <script src="https://waph-uc.github.io/clock.js"></script>
+                    <script>
+                        var canvas = document.getElementById("analog-clock");
+                        var ctx = canvas.getContext("2d");
+                        var radius = canvas.height / 2;
+                        ctx.translate(radius, radius);
+                        radius = radius * 0.90
+                        setInterval(drawClock, 1000);
+                        function drawClock() {
+                            drawFace(ctx, radius);
+                            drawNumbers(ctx, radius);
+                            drawTime(ctx, radius);
+                        }
+                    </script>
+
+                    <div id="email" onclick="showHideEmail()">Show my email</div>
+                    <script>
+                        var shown = false;
+                        function showHideEmail() {
+                            if (shown) {
+                                document.getElementById("email").innerHTML = "Show my Email";
+                                shown = false;
+                            } else {
+                                var myEmail = `
+                                        <p>gopaluna@mail.uc.edu</p>
+                                    `;
+                                document.getElementById("email").innerHTML = myEmail;
+                                shown = true;
+                            }
+                        }
+                    </script>
+
+                    <div style="margin-top: 10px;">
+                        <button class="btn btn-sm btn-secondary" onclick="getRandomQuote()">Generate Random Quote</button>
+                        <div id="quote"></div>
+                        <script>
+                            const quotes = [
+                                "The only way to do great work is to love what you do. - Steve Jobs",
+                                "Innovation distinguishes between a leader and a follower. - Steve Jobs",
+                                "Stay hungry, stay foolish. - Steve Jobs",
+                                "Your time is limited, don't waste it living someone else's life. - Steve Jobs",
+                                "It does not matter how slowly you go as long as you do not stop. - Confucius",
+                                "The only impossible journey is the one you never begin. - Tony Robbins",
+                                "Success is not final, failure is not fatal: It is the courage to continue that counts. - Winston Churchill",
+                                "Believe you can and you're halfway there. - Theodore Roosevelt",
+                                "The only limit to our realization of tomorrow will be our doubts of today. - Franklin D. Roosevelt",
+                                "The future belongs to those who believe in the beauty of their dreams. - Eleanor Roosevelt"
+                            ];
+
+                            function getRandomQuote() {
+                                // Generate a random index
+                                const randomIndex = Math.floor(Math.random() * quotes.length);
+                                
+                                // Get the quote at the random index
+                                const quote = quotes[randomIndex];
+
+                                // Display the quote on the webpage
+                                const quoteDiv = document.getElementById('quote');
+                                quoteDiv.textContent = `"${quote}"`;
+                            }
+                        </script>
+                    </div>
+
+                    <div style="margin-top: 10px;">
+                        <button class="btn btn-sm btn-secondary" onclick="getRandomJoke()">Generate Random Joke</button>
+                        <div id="joke"></div>
+                        <script>
+                            function getRandomJoke() {
+                                $.get("https://v2.jokeapi.dev/joke/Programming?type=single", function (result) {
+                                    // console.log("From jokeAPI: " + JSON.stringify(result));
+                                    $("#joke").html("A programming joke of the day: " + result.joke)
+                                })
+                            }
+                        </script>
+                    </div>
+
+                    <div style="margin-top: 10px;">
+                        <h6>Images from Unsplash API</h6>
+                        <div id="unsplash-images" class="row w-100">
+
+                        </div>
+                        <script>
+                            const access_key = `M07hnjT7AsotIET_eT2oxermxzSBTfanYDXZnnZfhJE`;
+                            $.get(`https://api.unsplash.com/photos/?client_id=${access_key}`, function (result) {
+                                const image_div = $(`#unsplash-images`);
+                                console.log(result);
+                                result.forEach(image => {
+                                    const image_cell = $(`<div class="col-3 m-3"><img src="${image.urls.thumb}" height="200" width="200"></div>`);
+                                    image_div.append(image_cell);
+                                })
+                            })
+                        </script>
+                    </div>
+
+                    <div style="margin-top: 10px;">
+                        <h6>Intro to WAPH Page</h6>
+                        Link to <a href="./waph.html">waph.html</a>
+                    </div>
                 </div>
-            </div>
+            </section>
         </div>
     </div>
 </body>
-</html>
+</html> 
